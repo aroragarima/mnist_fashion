@@ -14,5 +14,3 @@ from tensorflow.python.keras.layers import (
 from keras.utils.vis_utils import model_to_dot
 from keras.utils import plot_model
 from tensorflow.keras.callbacks import EarlyStopping
-
-import matplotlib.pyplot as plt
