@@ -5,9 +5,9 @@ class CNN(object):
     def __init__(self, lr, kernel_size, opt):
         self.lr = lr
         self.kernel_size = kernel_size
-        self.opt = opt
+        self.opt = 1 # Adam
 
-    def cnn_models(self):
+    def build_model(self):
         model = Sequential()
 
         # Adding Convolutional layer with 32 outputs which indicates number of filters to be used are 32 with each of them of dimension 5 x 5
@@ -48,9 +48,11 @@ class CNN(object):
         # S oftMax Layer for Classification
         model.add(Dense(10, activation="softmax"))
 
-        if self.opt == "Adam":
+        if self.opt == 1:
+            print("Adam Optimiser running")
             optimizer = keras.optimizers.Adam(lr=self.lr)
-        elif opt == "RMSprop":
+        elif self.opt == 2:
+            print("RMSprop Optimiser running")
             optimizer = keras.optimizers.RMSprop(lr=self.lr)
         else:
             print("Optimiser unrecognised, Please check help section for help")
@@ -62,6 +64,7 @@ class CNN(object):
 
         return model
 
+
 if __name__ == "__main__":
-	Custom_model = CNN(0.001, 5, "Adam")
-	print(Custom_model.cnn_models().summary())
+    Custom_model = CNN(0.001, 5, "Adam")
+    print(Custom_model.build_model().summary())
