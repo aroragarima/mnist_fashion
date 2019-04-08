@@ -5,7 +5,7 @@ class CNN(object):
     def __init__(self, lr, kernel_size, opt):
         self.lr = lr
         self.kernel_size = kernel_size
-        self.opt = 1 # Adam
+        self.opt = 1  # Adam
 
     def build_model(self):
         model = Sequential()

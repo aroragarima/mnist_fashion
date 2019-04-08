@@ -7,7 +7,7 @@ import argparse
 
 def train():
     Custom_model = CNN(args.lr, 5, args.opt).build_model()
-	# TODO: remove print statement
+    # TODO: remove print statement
     print(Custom_model.summary())
 
     es = keras.callbacks.EarlyStopping(monitor="val_loss", mode="min", verbose=1)
@@ -29,10 +29,16 @@ def train():
     print("Validation accuracy:", score[1])
 
     plot = plot_loss(train_model)
-    plot.savefig("Training_loss_{}_{}.png".format(args.lr, args.opt), bbox_inches='tight', dpi=200)
+    plot.savefig(
+        "Training_loss_{}_{}.png".format(args.lr, args.opt),
+        bbox_inches="tight",
+        dpi=200,
+    )
+
 
 def test():
     pass
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -93,4 +99,3 @@ if __name__ == "__main__":
         train()
 
     # Print results for the test set under the best hyperparamter setting under test()
-
