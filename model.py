@@ -45,7 +45,7 @@ class CNN(object):
         model.add(Dense(256, activation="relu"))
         # Adding Fully Connected Layer2
         model.add(Dense(256, activation="relu"))
-        # S oftMax Layer for Classification
+        # SoftMax Layer for Classification
         model.add(Dense(10, activation="softmax"))
 
         if self.opt == 1:
