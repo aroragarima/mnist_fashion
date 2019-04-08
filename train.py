@@ -15,7 +15,7 @@ def train():
         X_train,
         y_train,
         batch_size=args.batch_size,
-        epochs=5,
+        epochs=50,
         verbose=1,
         validation_data=(X_val, y_val),
         callbacks=[es],
