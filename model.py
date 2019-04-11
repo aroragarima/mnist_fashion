@@ -68,7 +68,6 @@ class CNN(object):
         return self.model.summary()
 
 
-
 if __name__ == "__main__":
     Custom_model = CNN(0.001, 5, "Adam")
     Custom_model.build_model()

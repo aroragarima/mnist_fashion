@@ -15,23 +15,37 @@ class DataLoader(object):
         image_filename = mode + "_images"
         label_zip = "./data/" + label_filename + ".zip"
         image_zip = "./data/" + image_filename + ".zip"
-        if mode == "train":
-            with ZipFile(label_zip, "r") as lblzip:
-                labels = np.frombuffer(
-                    lblzip.read(label_filename), dtype=np.uint8, offset=8
-                )
-            with ZipFile(image_zip, "r") as imgzip:
-                images = np.frombuffer(
-                    imgzip.read(image_filename), dtype=np.uint8, offset=16
-                ).reshape(len(labels), 784)
+        print("Loading {} Data".format(mode))
+        with ZipFile(label_zip, "r") as lblzip:
+            labels = np.frombuffer(
+                lblzip.read(label_filename), dtype=np.uint8, offset=8
+            )
+        with ZipFile(image_zip, "r") as imgzip:
+            images = np.frombuffer(
+                imgzip.read(image_filename), dtype=np.uint8, offset=16
+            ).reshape(len(labels), 784)
 
-            return images, labels
-        else:
-            with ZipFile(image_zip, "r") as imgzip:
-                images = np.frombuffer(
-                    imgzip.read(image_filename), dtype=np.uint8, offset=16
-                ).reshape(10000, 784)
-            return images
+        return images, labels
+
+        # if mode == "train":
+        #     print("Loading {} Data".format(mode))
+        #     with ZipFile(label_zip, "r") as lblzip:
+        #         labels = np.frombuffer(
+        #             lblzip.read(label_filename), dtype=np.uint8, offset=8
+        #         )
+        #     with ZipFile(image_zip, "r") as imgzip:
+        #         images = np.frombuffer(
+        #             imgzip.read(image_filename), dtype=np.uint8, offset=16
+        #         ).reshape(len(labels), 784)
+
+        #     return images, labels
+        # else:
+
+        #     with ZipFile(image_zip, "r") as imgzip:
+        #         images = np.frombuffer(
+        #             imgzip.read(image_filename), dtype=np.uint8, offset=16
+        #         ).reshape(10000, 784)
+        #     return images
 
 
 if __name__ == "__main__":
